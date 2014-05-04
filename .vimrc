@@ -1,11 +1,9 @@
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker :
-" Marco Knipfer .vimrc
-" lastname at F I A S dot uni - frankfurt dot de
-
+" MK .vimrc
 
 "--------------------------------------------------------------
-"|   Marco Knipfer .vimrc                                     |
-"|   lastname at F I A S dot uni - frankfurt dot de           |
+"|                                                            |
+"|                                                            |
 "--------------------------------------------------------------
 "|   MM          MM   KK    KK   V           I M V        M   |
 "|   MMM        MMM   KK   KK     V          I MV        MM   |
