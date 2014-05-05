@@ -65,8 +65,8 @@
     "{
     "Plugin 'tpope/vim-fugitive'        " Git Plugin
     Plugin 'Lokaltog/vim-easymotion'    " Neat! Maybe switch to stupideasymotion
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'spf13/vim-colors'
+    "Plugin 'altercation/vim-colors-solarized'
+    "Plugin 'spf13/vim-colors'
     "Plugin 'spf13/vim-autoclose'        
     Plugin 'flazz/vim-colorschemes'
     Plugin 'scrooloose/nerdtree'
@@ -74,12 +74,13 @@
     Plugin 'scrooloose/syntastic'
     Plugin 'tpope/vim-surround'         " Brackets --> read!
     Plugin 'bling/vim-airline'          " better status bar
-    Plugin 'vim-scripts/sessionman.vim' "very important :SessionSave
+    Plugin 'vim-scripts/sessionman.vim' " :SessionSave
     Plugin 'majutsushi/tagbar'          " tags 
     Plugin 'ervandew/supertab'          " Tab completion
     Plugin 'mbbill/undotree'
     Plugin 'jlanzarotta/bufexplorer'
-    Plugin 'jcf/vim-latex'             " Maybe use other latex pluggin (latex auto ...)
+    Plugin 'jcf/vim-latex'             " Maybe use other latex plugin (latex auto ...)
+    " https://github.com/gerw/vim-latex-suite     someday test it!
     Plugin 'tpope/vim-repeat.git'       " Repeat surround
     Plugin 'Raimondi/delimitMate'       " Ok try this, think it's good :P
     Plugin 'jeffkreeftmeijer/vim-numbertoggle'  " Plugin for toggling line numering and having abs. numbers in insert mode
@@ -260,8 +261,8 @@
     nmap <down> :b#<RETURN>
 
     " Jump to beginning/end of line while in insert
-    inoremap <c-a> <esc>I
-    inoremap <c-e> <esc>A
+    inoremap <c-i> <esc>I
+    inoremap <c-a> <esc>A
     " and while in normal
     if OSX()
         nnoremap ˙ ^
