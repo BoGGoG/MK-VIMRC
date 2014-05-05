@@ -1,5 +1,7 @@
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker :
-" MK .vimrc
+" Marco Knipfer .vimrc
+" lastname at F I A S dot uni - frankfurt dot de
+
 
 "--------------------------------------------------------------
 "|                                                            |
@@ -21,48 +23,86 @@
                                                                                        
 
 " Structure:
-" - Allowing Vundle to work and other things
+" - Environment
+"   - Letting Vundle work
+"   - Plugins
 " - General settings
 " - Vim UI
 " - Keymappings
-" - Bundles
-" - Settings for bundles
+" - Pluginsettings
 " - Functions
 
 " Requirements:
-" - vundle
+" - [vundle](https://github.com/gmarik/Vundle.vim)
 " - sauce code powerline font
 
-" Environment:
+" Environment/Vundle/Plugins:
 " {
+" Let Vundle work
+    " {
     set nocompatible              " be iMproved, required
     filetype off                  " required
 
     " set the runtime path to include Vundle and initialize
-    set rtp+=~/.vim/bundle/vundle/
-    call vundle#rc()
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
     " alternatively, pass a path where Vundle should install plugins
-    "let path = '~/some/path/here'
-    "call vundle#rc(path)
+    "call vundle#begin('~/some/path/here')
 
     " let Vundle manage Vundle, required
-    Plugin 'gmarik/vundle'
+    Plugin 'gmarik/Vundle'
 
 
-    filetype plugin indent on     " required
-    " To ignore plugin indent changes, instead use:
-    "filetype plugin on
-    "
     " Brief help
     " :PluginList          - list configured plugins
     " :PluginInstall(!)    - install (update) plugins
     " :PluginSearch(!) foo - search (or refresh cache first) for foo
     " :PluginClean(!)      - confirm (or auto-approve) removal of unused plugins
-    "
-    " see :h vundle for more details or wiki for FAQ
-    " NOTE: comments after Plugin commands are not allowed.
+    " }
 
-    " Identify platform {
+    " Here are all the plugins:
+    " Plugins:
+    "{
+    "Plugin 'tpope/vim-fugitive'        " Git Plugin
+    Plugin 'Lokaltog/vim-easymotion'    " Neat! Maybe switch to stupideasymotion
+    Plugin 'altercation/vim-colors-solarized'
+    Plugin 'spf13/vim-colors'
+    "Plugin 'spf13/vim-autoclose'        
+    Plugin 'flazz/vim-colorschemes'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'scrooloose/nerdcommenter'   " ,cc for comment / ,cu for uncomment
+    Plugin 'scrooloose/syntastic'
+    Plugin 'tpope/vim-surround'         " Brackets --> read!
+    Plugin 'bling/vim-airline'          " better status bar
+    Plugin 'vim-scripts/sessionman.vim' "very important :SessionSave
+    Plugin 'majutsushi/tagbar'          " tags 
+    Plugin 'ervandew/supertab'          " Tab completion
+    Plugin 'mbbill/undotree'
+    Plugin 'jlanzarotta/bufexplorer'
+    Plugin 'jcf/vim-latex'             " Maybe use other latex pluggin (latex auto ...)
+    Plugin 'tpope/vim-repeat.git'       " Repeat surround
+    Plugin 'Raimondi/delimitMate'       " Ok try this, think it's good :P
+    Plugin 'jeffkreeftmeijer/vim-numbertoggle'  " Plugin for toggling line numering and having abs. numbers in insert mode
+    " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
+    Plugin 'godlygeek/tabular'  "also for alignment
+    Plugin 'vim-scripts/Vimball'
+    "Plugin 'jistr/vim-nerdtree-tabs'
+    "Plugin 'nathanaelkane/vim-indent-guides'
+    "Plugin 'godlygeek/tabular'
+    "Plugin 'vim-scripts/Align'          " for alignment of eg tables
+    "Plugin 'vim-scripts/AutomaticLaTexPlugin'
+    "Plugin 'Townk/vim-autoclose'        " autoclosing brackets
+    "Plugin 'wincent/Command-T'          " For opening files
+    "Plugin 'kien/ctrlp.vim'
+    "Plugin 'terryma/vim-multiple-cursors'
+    "Plugin 'bling/vim-bufferline'
+    " }
+    " All of your Plugins must be added before the following line
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+
+    " Identify platform 
+    " {
         silent function! OSX()
             return has('macunix')
         endfunction
@@ -89,11 +129,11 @@
     "set autowrite              " Automatically write a file when leaving a modified buffer, interesting, but not using it for now
     set virtualedit=onemore     " Allow for cursor beyond last character
     set history=1000            " Store a ton of history (default is 20)
-    "set spell                   " Spell checking on, I don't really like it
+    set spell                   " Spell checking on, I don't really like it
     set hidden                  " Allow buffer switching without saving (Keybindings -> switching buffers with arrow keys)
-    "set backupdir=~/.vim/backup// " saves all ~ files in the same directory
+    set backupdir=~/.vim/backup// " saves all ~ files in the same directory
     "set directory=~/.vim/swap//   " same for swap
-    set nobackup
+    "set nobackup
     set noswapfile
     set undodir=~/.vim/undo//
     set visualbell              " turn off annoying bell (eg when pressing esc)    
@@ -103,7 +143,6 @@
 " {
 "   colors, font:
 "   {
-        "set guifont=Source\ Code\ Pro\ Light:h16            " Font family and font size.
         set guifont=Sauce\ Code\ Powerline\ Light:h16            " Font family and font size.
         " solarized theme{
         "set guifont=Sauce\ Code\ Powerline\ Light:h13
@@ -161,19 +200,19 @@
     set softtabstop=4               " Let backspace delete indent
     set shiftround                  " always round indents to multiple of shiftwidth
     set guioptions-=r               " don't show right scrollbar (maybe only on mac)
-    "set guioptions-=e
-    "set guioptions=
+    set guioptions-=T               " Disable the macvim toolbar
+    set guioptions-=L
     set nojoinspaces                " Prevents inserting two spaces after punctuation on a join (J)
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
     set nolist                      " list shows whitespaces, toggle with ,l (see keymappings below)
     "}
-    "statusbar
+"   statusbar:
 "   {
-"       I'll have to work on that one. Kind of not works together with vim-airline
-        set showmode                    " Display the current mode
-        set showcmd                     " shows info about current line
-        set laststatus=2                         " to display the status line always
+"       I'll have to work on that one. 
+        set showmode                     "Display the current mode
+        set showcmd                      "shows info about current line
+        set laststatus=2                          "to display the status line always
         set statusline=%<%f\                     " Filename
         set statusline+=%w%h%m%r                 " Options
         "set statusline+=%{fugitive#statusline()} " Git Hotness
@@ -185,10 +224,11 @@
 "
 " Keymappings:
 "{
-"   Very cool when on english keyboard, saves pinky pain xD
-"   but I'll have get used to it sometime ...
+"   Very cool, saves pinky pain :P
+"   but I'll have get used to it ... sometime ...
     "nore ; :
     "nore , ;
+
     " better mapleader
     let mapleader = ','
 
@@ -198,6 +238,7 @@
     " better, because in safari I have shortcuts to switch tabs with <C-H/L>
     " Also very good reason: <C-J> ist used in latex-suite to jump to
     " placeholder
+
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
     " also joining lines is now ,j instead of J
@@ -215,7 +256,7 @@
     nmap <right> :bn<RETURN>
     nmap <left> :bp<RETURN>
     " up and down 
-    nmap <up> :BufExplorer
+    nmap <up> :BufExplorer<RETURN>
     nmap <down> :b#<RETURN>
 
     " Jump to beginning/end of line while in insert
@@ -313,44 +354,6 @@
     " and ask which one to jump to
     nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
 "}
-
-" Bundles:
-"{
-    "Plugin 'tpope/vim-fugitive'        " Git Plugin, don't understand
-    Plugin 'Lokaltog/vim-easymotion'    " Neat! Maybe switch to stupideasymotion
-    Plugin 'scrooloose/nerdtree'
-    "Plugin 'FuzzyFinder'               " Don't understand it yet, but seams good
-    Plugin 'altercation/vim-colors-solarized'
-    Plugin 'spf13/vim-colors'
-    Plugin 'flazz/vim-colorschemes'
-    Plugin 'scrooloose/nerdcommenter'   " ,cc for comment / ,cu for uncomment
-    Plugin 'tpope/vim-surround'         " Brackets --> read!
-    Plugin 'bling/vim-airline'          " better status bar
-    "Plugin 'wincent/Command-T'          " For opening files
-    "Plugin 'kien/ctrlp.vim'
-    "Plugin 'terryma/vim-multiple-cursors'
-    Plugin 'vim-scripts/sessionman.vim' "very important :SessionSave
-    Plugin 'bling/vim-bufferline'
-    "Plugin 'jistr/vim-nerdtree-tabs'
-    Plugin 'mbbill/undotree'
-    "Plugin 'nathanaelkane/vim-indent-guides'
-    "Plugin 'godlygeek/tabular'
-    Plugin 'jcf/vim-latex'             " Maybe use other latex pluggin (latex auto ...)
-    Plugin 'tpope/vim-repeat.git'       " Repeat surround
-    "Plugin 'Townk/vim-autoclose'        " autoclosing brackets
-    "Plugin 'spf13/vim-autoclose'        " this actually seems better, watchout, seems that vim has the wrong help file for this
-    Plugin 'Raimondi/delimitMate'       " Ok try this, think it's good :P
-    Plugin 'jeffkreeftmeijer/vim-numbertoggle'  " Plugin for toggling line numering and having abs. numbers in insert mode
-                                        " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
-    Plugin 'majutsushi/tagbar'          " tags 
-    Plugin 'ervandew/supertab'          " Tab completion
-    Plugin 'vim-scripts/Align'          " for alignment of eg tables
-    Plugin 'https://github.com/godlygeek/tabular'  "also for alignment
-    Plugin 'vim-scripts/Vimball'
-    "Plugin 'vim-scripts/AutomaticLaTexPlugin'
-    Plugin 'jlanzarotta/bufexplorer'
-" }
-
 
 " Pluginsettings:
 "{
@@ -458,70 +461,15 @@
         call cursor(l, c)
     endfunction
     " }
-    " Join Lines with other command than J
-    " so I can remap J
-    " {
-    "function! JoinWithLeader(count, leaderText)
-        "let l:linecount = a:count
-        "" default number of lines to join is 2
-        "if l:linecount < 2
-            "let l:linecount = 2
-        "endif
-        "echo l:linecount . " lines joined"
-        "" clear errmsg so we can determine if the search fails
-        "let v:errmsg = ''
-
-        "" save off the search register to restore it later because we will clobber
-        "" it with a substitute command
-        "let l:savsearch = @/
-
-        "while l:linecount > 1
-            "" do a J for each line (no mappings)
-            "normal! J
-            "" remove the comment leader from the current cursor position
-            "silent! execute 'substitute/\%#\s*\%('.a:leaderText.'\)\s*/ /'
-            "" check v:errmsg for status of the substitute command
-            "if v:errmsg=~'Pattern not found'
-            "" just means the line wasn't a comment - do nothing
-            "elseif v:errmsg!=''
-            "echo "Problem with leader pattern for JoinWithLeader()!"
-            "else
-            "" a successful substitute will move the cursor to line beginning,
-            "" so move it back
-            "normal! ``
-            "endif
-            "let l:linecount = l:linecount - 1
-        "endwhile
-        "" restore the @/ register
-        "let @/ = l:savsearch
-    "endfunction
-    "" the actuall mapping:
-    ""nnoremap <silent> <buffer> <C-U> :call JoinWithLeader(v:count, '"')<CR>
-    "if OSX()
-        "nnoremap <silent> <buffer> ¨ :call JoinWithLeader(v:count, '"')<CR>
-    "else
-    "nnoremap <silent> <buffer> <leader>j :call JoinWithLeader(v:count, '"')<CR>
-    "end 
-"}
-
 "}
 
 
 " TODO:
 "{
-"   - Evernote Notebook Bundles 
-"   - Longer lines --> hm, really?
-"   - Vim airline --> done
-"   - also comment on next line
+"   - update vundle -> Vundle
 "   - read on vim-surround
-"   - learn vim easymotion --> done
-"   - :help insert lesen!
-"   - tabular und align lesen
-"   - supertab besser einstellen
-"   - latex-suite install --> done
-"   - latex-site ,lv   and problems with compiling
-"   - list all keybindings
-"   - mapping for toggling automatic :Tab 
+"   - read :help insert 
+"   - supertab better settings
 "}
 
 
