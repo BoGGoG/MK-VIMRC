@@ -1,0 +1,139 @@
+\documentclass[10pt,landscape,a4paper]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage[landscape]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{color,graphicx,overpic}
+\usepackage{hyperref}
+\usepackage{fancyvrb}% http://ctan.org/pkg/fancyvrb
+
+
+\pdfinfo{
+    /Title (mkvimrc-bindings.pdf)
+    /Creator (MK)
+    /Producer (pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013))
+    /Author (MK)
+    /Subject (.vimrc bindings)
+    /Keywords (vim, bindings, keybindings, vimrc, .vimrc)}
+
+\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm}
+
+\pagestyle{empty}
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+\begin{document}
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\underline{MK VIMRC Bindings}} \\
+\end{center}
+\verb+,+\quad:=\quad \verb+<leader>+
+\section{Movement}
+\begin{tabular}{ll}
+    \verb+<A-j>+              & 10j\\
+    \verb+<A-k>+              & 10k\\
+    \verb+<A-h>+              & ``soft'' move to bol \\
+    \verb+<A-l>+              & move to eol \\
+    \verb+<leader><leader>w+  & Easymotion (EM) \\
+    \verb+<leader><leader>fo+ & EM: Search ``o'' \\
+    \verb+<C-a>+              & jump to eol (while insert) \\
+    \verb+<C-i>+              & jump to bol (while insert) \\
+    \verb+<leader>ff+         & display lines with word under cursor \\
+    ~                         & and ask which one to jump to \\
+\end{tabular}
+\section{Editing}
+\begin{tabular}{ll}
+    \verb+<leader>a&+& align wrt \verb+&+ \\
+    ~                & works with: \verb#& = : , |# \\
+    \verb+<A-o>+     & insert blank line below \\
+    \verb+<A-O>+     & insert blank line above \\
+    \verb+<leader>j+ & join lines (usually \verb+<S-j>+) \\
+    \verb+<S-Y>+     & copy to eol \\
+    \verb+<leader>u+ & toggle Undotree \\
+\end{tabular}
+\section{Tabs/Windows}
+\subsection{Movement between tabs/windows}
+\begin{tabular}{ll}
+    \verb+<S-l>+ & move to window left \\
+    \verb+<S-h>+ & move to window right \\
+    \verb+<S-j>+ & move to window beneath \\
+    \verb+<S-k>+ & move to window above \\
+    \verb+<C-l>+ & Next tab \\
+    \verb+<C-h>+ & Prev tab \\
+\end{tabular}
+\subsection{Misc tabs/windows}
+\begin{tabular}{ll}
+\verb+<leader>v+  & vsplit \\
+\verb+<leader>ev+ & .vimrc in new tab \\
+\verb+<leader>sl+ & :SessionList \\
+\verb+<leader>ss+ & :SessionSave \\
+\verb+<leader>sc+ & :SessionClose \\
+\verb+<C-e>+      & open NerdTree \\
+\verb+<leader>t+  & open tagbar \\
+$\rightarrow$     & next buffer \\
+$\leftarrow$      & previous buffer \\
+$\uparrow$        & show bufferlist (bufexplorer) \\
+$\downarrow$      & jump to last used buffer \\
+
+\end{tabular}
+\section{VIM-UI}
+\begin{tabular}{ll}
+    \verb+<Space>+   & toggle fold \\
+    \verb+<leader>z+ & refocus folds \\
+    \verb+<leader>l+ & toggle show whitespaces/tabs \\
+    \verb+-+         & disable search highlighting \\
+    \verb+<C-n>+     & switch between relnum/absnum \\
+\end{tabular}
+
+\begin{Verbatim}
+--------------------------------------------------------------
+|                                                            |
+--------------------------------------------------------------
+|   MM          MM   KK    KK   V           I M V        M   |
+|   MMM        MMM   KK   KK     V          I MV        MM   |
+|   MM M      M MM   KK  KK       V         I V M      M M   |
+|   MM  M    M  MM   KK KK         V        IVM  M    M  M   |
+|   MM   MMMM   MM   KKK            V       V M   MMMM   M   |
+|   MM    MM    MM   KK KK           V     VI M    MM    M   |
+|   MM          MM   KK  KK           V   V I M          M   |
+|   MM          MM   KK   KK           V V  I M          M   |
+|   MM          MM.  KK    KK.          V   I M          M   |
+--------------------------------------------------------------
+|                                                            |
+--------------------------------------------------------------
+\end{Verbatim}
+\end{multicols}
+\end{document}
