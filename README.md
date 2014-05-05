@@ -41,34 +41,40 @@ some different keymappings, which I find pretty awesome =)
 
 # Some plugins I am loading:
 
-## [Easymotion](https://github.com/Lokaltog/vim-easymotion)
+### [Easymotion](https://github.com/Lokaltog/vim-easymotion)
 With `,,w` one can jump around very quickly. Another important binding is 
 `,fo` which lets one jump to `o`'s pretty fast (or another letter ...). 
 
-## [Airline](https://github.com/bling/vim-airline)
+### [Airline](https://github.com/bling/vim-airline)
 This gives nice status bars. 
 
-## [Tabular](https://github.com/godlygeek/tabular)
+### [Tabular](https://github.com/godlygeek/tabular)
 This one is great for tables. With e.g. `,a&` you can align your test with 
 respect to `&`. This also works for other characters (see tabular help and my plugin settings).
 
-## [Tagbar](http://majutsushi.github.io/tagbar/)
+### [Tagbar](http://majutsushi.github.io/tagbar/)
 With `,t` show a windows with tags for your file, awesome! 
 
-## [Nerdtree](https://github.com/scrooloose/nerdtree)
+### [Nerdtree](https://github.com/scrooloose/nerdtree)
 Great UI for opening files. Binding is `<C-e>`. 
 
-## [Nerdcommenter](https://github.com/scrooloose/nerdcommenter)
+### [Nerdcommenter](https://github.com/scrooloose/nerdcommenter)
 `,cc` for making a line a comment, `,cu` for uncommenting it. 
 
-## [Latex-Suite](http://vim-latex.sourceforge.net/index.php?subject=download&title=Download)
+### [Latex-Suite](http://vim-latex.sourceforge.net/index.php?subject=download&title=Download)
 Since I am writing a lot in LaTeX, this is a very important plugin for me.  
 `,ll` compiles the document and `,lv` openes the viewer. 
 
-I recomend *Skim* as viewer. There you can click in the pdf on the part you want 
+I recomend [Skim](http://skim-app.sourceforge.net) as viewer. There you can click in the pdf on the part you want 
 in order to jump to the corresponding section in the .tex file. 
 
 
+# Cya
+
+That's it, thanks [spf13](http://spf13.com) for his awesome .vimrc as inspiration.
+
+I also include a cheatsheet pdf with my bindings (not the general vim bindings, for that see e.g. 
+[this graphical cheatseet](http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html).
 
 
 I would love to get some feedback =)
