@@ -74,7 +74,7 @@ in order to jump to the corresponding section in the .tex file.
 That's it, thanks [spf13](http://spf13.com) for his awesome .vimrc as inspiration.
 
 I also include a cheatsheet pdf with my bindings (not the general vim bindings, for that see e.g. 
-[this graphical cheatseet](http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html).
+[this graphical cheatseet](http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html)).
 
 
 I would love to get some feedback =)
