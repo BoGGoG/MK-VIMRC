@@ -50,7 +50,7 @@
     "call vundle#begin('~/some/path/here')
 
     " let Vundle manage Vundle, required
-    Plugin 'gmarik/Vundle'
+    Plugin 'gmarik/Vundle.vim'
 
 
     " Brief help
