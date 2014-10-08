@@ -3,24 +3,25 @@
 " lastname at F I A S dot uni - frankfurt dot de
 
 
-"--------------------------------------------------------------
-"|                                                            |
-"|                                                            |
-"--------------------------------------------------------------
-"|   MM          MM   KK    KK   V           I M V        M   |
-"|   MMM        MMM   KK   KK     V          I MV        MM   |
-"|   MM M      M MM   KK  KK       V         I V M      M M   |
-"|   MM  M    M  MM   KK KK         V        IVM  M    M  M   |
-"|   MM   MMMM   MM   KKK            V       V M   MMMM   M   |
-"|   MM    MM    MM   KK KK           V     VI M    MM    M   |
-"|   MM          MM   KK  KK           V   V I M          M   |
-"|   MM          MM   KK   KK           V V  I M          M   |
-"|   MM          MM.  KK    KK.          V   I M          M   |
-"--------------------------------------------------------------
-"|                                                            |
-"--------------------------------------------------------------
-                                                                                       
-                                                                                       
+"|------------------------------------------------------------|"
+"|                                                            |"
+"|                                                            |"
+"|------------------------------------------------------------|"
+"|   MM          MM   KK    KK   V           I M V        M   |"
+"|   MMM        MMM   KK   KK     V          I MV        MM   |"
+"|   MM M      M MM   KK  KK       V         I V M      M M   |"
+"|   MM  M    M  MM   KK KK         V        IVM  M    M  M   |"
+"|   MM   MMMM   MM   KKK            V       V M   MMMM   M   |"
+"|   MM    MM    MM   KK KK           V     VI M    MM    M   |"
+"|   MM          MM   KK  KK           V   V I M          M   |"
+"|   MM          MM   KK   KK           V V  I M          M   |"
+"|   MM          MM.  KK    KK.          V   I M          M   |"
+"|------------------------------------------------------------|"
+"|                                                            |"
+"|------------------------------------------------------------|"
+                                                              
+" This .vimrc is intended to be used with a qwerty keyboard
+                                                              
 
 " Structure:
 " - Environment
@@ -97,6 +98,7 @@
     "Plugin 'kien/ctrlp.vim'
     "Plugin 'terryma/vim-multiple-cursors'
     "Plugin 'bling/vim-bufferline'
+    Plugin 'https://github.com/dahu/VimRegexTutor.git'
     " }
     " All of your Plugins must be added before the following line
     call vundle#end()            " required
@@ -127,7 +129,7 @@
     "scriptencoding utf-8       " what does this thing?
     set encoding=utf-8 fileencoding=utf-8
     set clipboard=unnamed       " in order to have the same clipboard as elsewhere
-    "set autowrite              " Automatically write a file when leaving a modified buffer, interesting, but not using it for now
+    "set autowrite              " Automatically write a file when leaving a modified buffer, interesting, but not using it for now 
     set virtualedit=onemore     " Allow for cursor beyond last character
     set history=1000            " Store a ton of history (default is 20)
     set spell                   " Spell checking on, I don't really like it
@@ -182,10 +184,18 @@
     "set listchars=tab:\|\<Space>
     set ttyfast                     " Improves redrawing, don't know if this really does anything
     set foldcolumn=2                " indicates folding on left corner
+    "if OSX()
+        "set fu                      " make fullscreen on launch! 
+    "end
+    set lines=100 columns=100
 "   }
 "   Formatting:
 "   {
-    set nowrap                      " Do not wrap long lines
+    "set nowrap                      " Do not wrap long lines
+    set wrap
+    set linebreak
+    set textwidth=0
+    set wrapmargin=0
     set autoindent                  " Indent at the same level of the previous line
     set smartindent                 " try to be smart about indenting (C-style)
     set shiftwidth=4                " Use indents of 4 spaces
@@ -207,6 +217,12 @@
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
     set nolist                      " list shows whitespaces, toggle with ,l (see keymappings below)
+
+    " Highlight all overlength lines (80 characters)
+    augroup vimrc_autocmds
+        autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+        autocmd BufEnter * match OverLength /\%80v.*/
+    augroup END
     "}
 "   statusbar:
 "   {
@@ -283,6 +299,9 @@
         noremap ∆ 10jzz
         nmap ˚ 10kzz
         noremap ˚ 10kzz
+        "nmap º 10jzz
+        "nmap ∆ 10kzz
+        "those two are for german layout
     else
         nmap <A-j> 10jzz
         noremap <A-j> 10jzz
@@ -291,11 +310,11 @@
     end
     " open split with ,v
     noremap <leader>v <C-w>v
+
     " Insert empty line.
     if OSX() 
         nmap ø o<ESC>k
         noremap Ø O<ESC>j
-    " ok I included the normal commands too :P
     else
         nmap <A-o> o<ESC>k
         nmap <A-O> O<ESC>j
@@ -313,6 +332,9 @@
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
+
+    " easy good paste
+    map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
 
     " Code folding options
     "nmap <leader>f0 :set foldlevel=0<CR>
@@ -348,12 +370,19 @@
     " Visual shifting (does not exit Visual mode)
     vnoremap < <gv
     vnoremap > >gv
+
     " Allow using the repeat operator with a visual selection (!)
     " http://stackoverflow.com/a/8064607/127816
     vnoremap . :normal .<CR>   
     " Map <Leader>ff to display all lines with keyword under cursor
     " and ask which one to jump to
     nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
+
+    " In Ex mode <up> and <down> scrolls through suggestions, but for that I
+    " have to move my hand away ...
+    " <C-p> and <C-n> do the same, but don't filter the history, so:
+    cnoremap <C-p> <Up>
+    cnoremap <C-n> <Down>
 "}
 
 " Pluginsettings:
@@ -386,6 +415,11 @@
         imap ˆ <Plug>Tex_InsertItemOnThisLine
         imap ç <Plug>Tex_MathCal
     end
+
+    
+    " ignore all warnings below level 4
+    let g:TCLevel = 4
+
     set iskeyword+=: 
     let g:tex_flavor='latex'
     let g:Tex_TreatMacViewerAsUNIX = 1
@@ -471,6 +505,8 @@
 "   - read on vim-surround
 "   - read :help insert 
 "   - supertab better settings
+"   - Get <A-j> and <A-k> right for german and english layout
 "}
+
 
 
