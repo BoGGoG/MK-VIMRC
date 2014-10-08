@@ -58,7 +58,7 @@
 \setlength{\columnsep}{2pt}
 
 \begin{center}
-     \Large{\underline{MK VIMRC Custom Bindings}} \\
+     \Large{\underline{MK VIMRC Bindings}} \\
 \end{center}
 \verb+,+\quad:=\quad \verb+<leader>+
 \section{Movement}
