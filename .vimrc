@@ -3,25 +3,24 @@
 " lastname at F I A S dot uni - frankfurt dot de
 
 
-"|------------------------------------------------------------|"
-"|                                                            |"
-"|                                                            |"
-"|------------------------------------------------------------|"
-"|   MM          MM   KK    KK   V           I M V        M   |"
-"|   MMM        MMM   KK   KK     V          I MV        MM   |"
-"|   MM M      M MM   KK  KK       V         I V M      M M   |"
-"|   MM  M    M  MM   KK KK         V        IVM  M    M  M   |"
-"|   MM   MMMM   MM   KKK            V       V M   MMMM   M   |"
-"|   MM    MM    MM   KK KK           V     VI M    MM    M   |"
-"|   MM          MM   KK  KK           V   V I M          M   |"
-"|   MM          MM   KK   KK           V V  I M          M   |"
-"|   MM          MM.  KK    KK.          V   I M          M   |"
-"|------------------------------------------------------------|"
-"|                                                            |"
-"|------------------------------------------------------------|"
-                                                              
-" This .vimrc is intended to be used with a qwerty keyboard
-                                                              
+"--------------------------------------------------------------
+"|                                                            |
+"|                                                            |
+"--------------------------------------------------------------
+"|   MM          MM   KK    KK   V           I M V        M   |
+"|   MMM        MMM   KK   KK     V          I MV        MM   |
+"|   MM M      M MM   KK  KK       V         I V M      M M   |
+"|   MM  M    M  MM   KK KK         V        IVM  M    M  M   |
+"|   MM   MMMM   MM   KKK            V       V M   MMMM   M   |
+"|   MM    MM    MM   KK KK           V     VI M    MM    M   |
+"|   MM          MM   KK  KK           V   V I M          M   |
+"|   MM          MM   KK   KK           V V  I M          M   |
+"|   MM          MM.  KK    KK.          V   I M          M   |
+"--------------------------------------------------------------
+"|                                                            |
+"--------------------------------------------------------------
+                                                                                       
+                                                                                       
 
 " Structure:
 " - Environment
@@ -35,11 +34,11 @@
 
 " Requirements:
 " - [vundle](https://github.com/gmarik/Vundle.vim)
-" - sauce code powerline font
+" - (not this version) sauce code powerline font 
 
 " Environment/Vundle/Plugins:
 " {
-" Let Vundle work its magic
+" Let Vundle work
     " {
     set nocompatible              " be iMproved, required
     filetype off                  " required
@@ -66,28 +65,28 @@
     "{
     "Plugin 'tpope/vim-fugitive'        " Git Plugin
     Plugin 'Lokaltog/vim-easymotion'    " Neat! Maybe switch to stupideasymotion
-    Plugin 'altercation/vim-colors-solarized'
+    "Plugin 'altercation/vim-colors-solarized'
     "Plugin 'spf13/vim-colors'
     "Plugin 'spf13/vim-autoclose'        
     Plugin 'flazz/vim-colorschemes'
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/nerdcommenter'   " ,cc for comment / ,cu for uncomment
     Plugin 'scrooloose/syntastic'
-    Plugin 'tpope/vim-surround'         " Brackets --> read!
+    Plugin 'tpope/vim-surround'         " Brackets --> read doc!
     Plugin 'bling/vim-airline'          " better status bar
-    "Plugin 'vim-scripts/sessionman.vim' " :SessionSave
+    Plugin 'vim-scripts/sessionman.vim' " :SessionSave
     Plugin 'majutsushi/tagbar'          " tags 
-    "Plugin 'ervandew/supertab'          " Tab completion
-    "Plugin 'mbbill/undotree'
+    Plugin 'ervandew/supertab'          " Tab completion
+    Plugin 'mbbill/undotree'
     Plugin 'jlanzarotta/bufexplorer'
     "Plugin 'jcf/vim-latex'             " Maybe use other latex plugin (latex auto ...)
-    Plugin 'https://github.com/gerw/vim-latex-suite'     
-    "Plugin 'tpope/vim-repeat.git'       " Repeat surround
-    "Plugin 'Raimondi/delimitMate'       " Ok try this, think it's good :P
+    Plugin 'gerw/vim-latex-suite'
+    Plugin 'tpope/vim-repeat.git'       " Repeat surround
+    Plugin 'Raimondi/delimitMate'       " Ok try this, think it's good :P
     Plugin 'jeffkreeftmeijer/vim-numbertoggle'  " Plugin for toggling line numering and having abs. numbers in insert mode
     " http://jeffkreeftmeijer.com/2012/relative-line-numbers-in-vim-for-super-fast-movement/
     Plugin 'godlygeek/tabular'  "also for alignment
-    "Plugin 'vim-scripts/Vimball'
+    Plugin 'vim-scripts/Vimball'
     "Plugin 'jistr/vim-nerdtree-tabs'
     "Plugin 'nathanaelkane/vim-indent-guides'
     "Plugin 'godlygeek/tabular'
@@ -98,21 +97,9 @@
     "Plugin 'kien/ctrlp.vim'
     "Plugin 'terryma/vim-multiple-cursors'
     "Plugin 'bling/vim-bufferline'
-    "Plugin 'https://github.com/dahu/VimRegexTutor.git'
-    "Plugin 'https://github.com/neilagabriel/vim-geeknote'
-    Plugin 'mhinz/vim-startify'
-    "Plugin 'Yggdroot/indentLine'
-    Plugin 'mtth/scratch.vim'           "scratch window =)
-    "Plugin 'kien/rainbow_parentheses.vim'
-    "Plugin 'https://github.com/vim-scripts/Vim-R-plugin.git'
-    Plugin 'davidhalter/jedi-vim'
-    Plugin 'nvie/vim-flake8' 
-    Plugin 'Chiel92/vim-autoformat'   
-    "Plugin 'terryma/vim-expand-region'
-    Plugin 'nathanaelkane/vim-indent-guides'
-    
-    
-    " Snippets
+    Plugin 'plasticboy/vim-markdown'
+    Plugin 'mrtazz/simplenote.vim'
+
     Plugin 'Shougo/neocomplete'
     Plugin 'Shougo/neosnippet'
     Plugin 'Shougo/neosnippet-snippets'
@@ -134,36 +121,31 @@
         endfunction
     " }
 " }
+
 " General Settings:
 "{
+    " this is still a mess
     filetype on
     filetype plugin indent on   " Automatically detect file types.
-    set grepprg=grep\ -nH\ $*
     set fileformats=unix,dos,mac "allowes my alfred-plugin (mac) to work properly
     syntax on                   " Syntax highlighting
     set mouse=a                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
     "scriptencoding utf-8       " what does this thing?
     set encoding=utf-8 fileencoding=utf-8
-    if has("mac")
-        set clipboard+=unnamed
-    else
-        set clipboard=unnamedplus
-    endif
-    "set autowrite              " Automatically write a file when leaving a modified buffer, interesting, but not using it for now 
+    set clipboard=unnamed       " in order to have the same clipboard as elsewhere
+    "set autowrite              " Automatically write a file when leaving a modified buffer, interesting, but not using it for now
     set virtualedit=onemore     " Allow for cursor beyond last character
-    set spell                   " Spell checking on, I don't really like it
-    set hidden                  " Allow buffer switching without saving (Keybindings -> switching buffers with arrow keys)
-    set backupdir=~/.vim/backup// " saves all ~ files in the same directory
-    "set directory=~/.vim/swap//   " same for swap
-    "set nobackup
-    set noswapfile
     set history=1000            " Store a ton of history (default is 20)
-    set undolevels=1000         " use many muchos levels of undo
-    set undodir=~/.vim/undo//
+    "set spell                   " Spell checking on, I don't really like it,
+    set nospell
+    set hidden                  " Allow buffer switching without saving (Keybindings -> switching buffers with arrow keys)
+    "set backupdir=~/.vim/backup// " saves all ~ files in the same directory
+    "set directory=~/.vim/swap//   " same for swap
+    set nobackup
+    set noswapfile
+    set undodir=~/.vim/undo/
     set visualbell              " turn off annoying bell (eg when pressing esc)    
-    "set shell=bash                         " Required to let zsh know how to run things on command line
-    set autoread                " automatically reload files changed outside of Vim
 "}
 
 " Vim UI:
@@ -180,19 +162,8 @@
         " }
         highlight NonText guifg=#4a4a59     "other colors for the tab-symbols
         highlight SpecialKey guifg=#4a4a59
-        highlight ColorColumn ctermbg=magenta
-        call matchadd('ColorColumn', '\%81v', 100)
         color desert                " Load a colorscheme
-        set background=dark
-        "colorscheme solarized
         set antialias               " MacVim: smooth fonts.
-        set title                " change the terminal's title
-
-        "latex conceal (make symbols look nice) 
-        set conceallevel=0
-        hi Conceal guibg=NONE guifg=White
-        " to disable it: (or set conceallevel=0)
-        " let g:tex_conceal = ""
 "   }
 "   misc:
 "   {
@@ -219,20 +190,10 @@
     "set listchars=tab:\|\<Space>
     set ttyfast                     " Improves redrawing, don't know if this really does anything
     set foldcolumn=2                " indicates folding on left corner
-    "if OSX()
-        "set fu                      " make fullscreen on launch! 
-    "end
-    set lines=100 columns=100
 "   }
 "   Formatting:
 "   {
-    "set nowrap                      " Do not wrap long lines
-    set wrap
-    set linebreak
-    set textwidth=0
-    "set colorcolumn=81
-    "highlight ColorColumn guibg=Black
-    set wrapmargin=0
+    set nowrap                      " Do not wrap long lines
     set autoindent                  " Indent at the same level of the previous line
     set smartindent                 " try to be smart about indenting (C-style)
     set shiftwidth=4                " Use indents of 4 spaces
@@ -240,7 +201,6 @@
     set preserveindent              " save as much indent structure as possible
     set listchars=tab:▸\ ,eol:¬     " Use the same symbols as TextMate for tabstops and EOLs
                                     " --> shortcut for to toggle :set list!
-    set showbreak=↪\                " Shows wrap linebreak
     set showmatch                   " Show matching brackets/parenthesis
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
@@ -255,12 +215,6 @@
     set splitright                  " Puts new vsplit windows to the right of the current
     set splitbelow                  " Puts new split windows to the bottom of the current
     set nolist                      " list shows whitespaces, toggle with ,l (see keymappings below)
-
-    " Highlight all overlength lines (80 characters)
-    "augroup vimrc_autocmds
-        "autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-        "autocmd BufEnter * match OverLength /\%80v.*/
-    "augroup END
     "}
 "   statusbar:
 "   {
@@ -279,49 +233,34 @@
 "
 " Keymappings:
 "{
+"   Very cool, saves pinky pain :P
+"   but I'll have get used to it ... sometime ...
+    "nore ; :
+    "nore , ;
 
-"  Commands                        Mode
-"  --------                        ----
-"  map                             Normal, Visual, Select, Operator Pending modes
-"  nmap, nnoremap, nunmap          Normal mode
-"  imap, inoremap, iunmap          Insert and Replace mode
-"  vmap, vnoremap, vunmap          Visual and Select mode
-"  xmap, xnoremap, xunmap          Visual mode
-"  smap, snoremap, sunmap          Select mode
-"  cmap, cnoremap, cunmap          Command-line mode
-"  omap, onoremap, ounmap          Operator pending mode
-
-
-    " mapleader
+    " better mapleader
     let mapleader = ','
-    " reverse character search was "," now it is "\"
-    noremap \ ,
-
-    "save with ,s
-    nnoremap <leader>s :w<cr>
-    "quit with ,q
-    noremap <leader>q :q<cr>
 
 " Moving in tabs/windows
     " Comment: in the spf13 vimrc S and C are the other way round for
     " switching tabs\windows. I like this
     " better, because in safari I have shortcuts to switch tabs with <C-H/L>
-    " Also very good reason: <C-J> is used in latex-suite to jump to
+    " Also very good reason: <C-J> ist used in latex-suite to jump to
     " placeholder
 
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
     " also joining lines is now ,j instead of J
-    map <S-J> <C-W>j
-    map <S-K> <C-W>k
-    map <S-L> <C-W>l
-    map <S-H> <C-W>h
+    map <S-J> <C-W>j<C-W>_
+    map <S-K> <C-W>k<C-W>_
+    map <S-L> <C-W>l<C-W>_
+    map <S-H> <C-W>h<C-W>_
     " The following two lines conflict with moving to top and
     " bottom of the screen, whith it you can jump between tabs
     map <C-H> gT
     map <C-L> gt
     " joining lines
-    nmap <leader>j ^d0i<BS><space><esc>
+    nmap <leader>j ^d0i<BS><space>
     " Left and right are for switching buffers, not moving the cursor:
     nmap <right> :bn<RETURN>
     nmap <left> :bp<RETURN>
@@ -334,9 +273,7 @@
     inoremap <c-a> <esc>A
     " and while in normal
     if OSX()
-        " alt h
-        nnoremap ˙ ^ 
-        " alt l
+        nnoremap ˙ ^
         nnoremap ¬ $
     else
         nmap <A-h> ^
@@ -350,35 +287,25 @@
     noremap gk k    
     " move up/down fast with alt j alt k
     if OSX()
-        " alt j
         nmap ∆ 10jzz
         noremap ∆ 10jzz
-        " alt k
         nmap ˚ 10kzz
         noremap ˚ 10kzz
-        "nmap º 10jzz
-        "nmap ∆ 10kzz
-        "those two are for german layout
     else
         nmap <A-j> 10jzz
         noremap <A-j> 10jzz
         nmap <A-k> 10kzz
         noremap <A-k> 10kzz
     end
+
     " open split with ,v
     noremap <leader>v <C-w>v
 
-    " move to corresponding bracket with tab
-    nnoremap <tab> %
-    vnoremap <tab> %
-    inoremap <tab> <Space><Space><Space><Space>
-
-    " Insert empty line.
+    " Insert empty line with ALT o
     if OSX() 
-        " alt o
         nmap ø o<ESC>k
-        " alt shift o
         noremap Ø O<ESC>j
+    " ok I included the normal commands too :P
     else
         nmap <A-o> o<ESC>k
         nmap <A-O> O<ESC>j
@@ -397,16 +324,17 @@
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
 
-    " easy good paste
-    map <Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>
-
     " Code folding options
-    nnoremap z0 :set foldlevel=0<cr>
-    nnoremap z1 :set foldlevel=1<cr>
-    nnoremap z2 :set foldlevel=2<cr>
-    nnoremap z3 :set foldlevel=3<cr>
-    nnoremap z4 :set foldlevel=4<cr>
-    nnoremap z5 :set foldlevel=5<cr>
+    "nmap <leader>f0 :set foldlevel=0<CR>
+    "nmap <leader>f1 :set foldlevel=1<CR>
+    "nmap <leader>f2 :set foldlevel=2<CR>
+    "nmap <leader>f3 :set foldlevel=3<CR>
+    "nmap <leader>f4 :set foldlevel=4<CR>
+    "nmap <leader>f5 :set foldlevel=5<CR>
+    "nmap <leader>f6 :set foldlevel=6<CR>
+    "nmap <leader>f7 :set foldlevel=7<CR>
+    "nmap <leader>f8 :set foldlevel=8<CR>
+    "nmap <leader>f9 :set foldlevel=9<CR>
 
     " Shortcut to rapidly toggle `set list` (see whitespaces etc)
     nmap <leader>l :set list!<CR>
@@ -415,8 +343,7 @@
     nnoremap <Space> za
     vnoremap <Space> za
 
-    "Refocus" folds, awesome!  zM closes all folds, zv opens fold in current
-    "line, zz focus to middle of screen
+    "Refocus" folds, awesome!  zM closes all folds, zv opens fold in current line, zz focus to middle of screen
     nnoremap <leader>z zMzvzz
 
     " Disable search highlighting with a single keypress
@@ -426,45 +353,18 @@
     map n nzz
     map N Nzz
 
-    " Quick editing -----------------------------------------------------------
+    " Quick editing of vimrc
         nnoremap <leader>ev :tabnew $MYVIMRC<cr>
-        nnoremap <leader>sv :source $MYVIMRC<CR>
+
     " Visual shifting (does not exit Visual mode)
     vnoremap < <gv
     vnoremap > >gv
-
     " Allow using the repeat operator with a visual selection (!)
     " http://stackoverflow.com/a/8064607/127816
     vnoremap . :normal .<CR>   
-
     " Map <Leader>ff to display all lines with keyword under cursor
     " and ask which one to jump to
-    " AWESOME!
     nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
-
-    " In Ex mode <up> and <down> scrolls through suggestions, but for that I
-    " have to move my hand away ...
-    " <C-p> and <C-n> do the same, but don't filter the history, so:
-    cnoremap <C-p> <Up>
-    cnoremap <C-n> <Down>
-
-    " ,n to insert the time, 'n'ow
-    map <leader>n "=strftime("%FT%T%z")<CR>Pa<SPACE>
-
-    " Use ,d (or ,dd or ,dj or 20,dd) to delete a line without adding it to the
-    " yanked stack (also, in visual mode)
-    nnoremap <silent> <leader>d "_d
-    vnoremap <silent> <leader>d "_d
-
-    "make leader space in normal mode add space
-    nnoremap <leader><Space> i<Space><Esc>l
-
-    "make enter break and do newlines
-    nnoremap <leader><CR> o<Esc>j
-    nnoremap <leader>j i<CR><Esc>==
-    
-    " visual reselect of just pasted
-    nnoremap gp `[v`]
 "}
 
 " Pluginsettings:
@@ -492,32 +392,25 @@
     "{
     " Problem: Alt Keys on mac ...
     if OSX()
-        " alt L 
-        imap ¬ <Plug>Tex_LeftRight 
-        " alt B
+        imap ¬ <Plug>Tex_LeftRight
         imap ∫ <Plug>Tex_MathBF
-        "imap ˆ <Plug>Tex_InsertItemOnThisLine
-        " alt o 
-        imap ø <Plug>Tex_InsertItemOnThisLine  
-        " alt c 
+        imap ˆ <Plug>Tex_InsertItemOnThisLine
         imap ç <Plug>Tex_MathCal
     end
-
-    
-    " warnings
-    let g:TCLevel = 3
-
     set iskeyword+=: 
-    let g:Tex_MultipleCompileFormats='pdf'
-    let g:Tex_DefaultTargetFormat='pdf'
-    let g:tex_flavor='latex'
-    " make folder "build", put all output files in
-    " there and then copy the pdf file 
-    let g:Tex_CompileRule_pdf='mkdir -p build; pdflatex -output-directory build -interaction=nonstopmode $*; cp build/*.pdf cp build/*.pdfsync .'
+    "let g:tex_flavor='latex'
+    let g:tex_flavor='xelatex'
+    "let g:Tex_CompileRule_pdf= 'pdflatex -interaction=nonstopmode -file-line-error-style $*'
+    let g:Tex_DefaultTargetFormat = 'pdf'
+    let g:Tex_MultipleCompileFormats='pdf, bibtex, pdf'
+    "let g:Tex_MultipleCompileFormats='pdf, aux'
     let g:Tex_TreatMacViewerAsUNIX = 1
     let g:Tex_ExecuteUNIXViewerInForeground = 1
-    let g:Tex_ViewRule_pdf = 'open -a /Applications/Skim.app'
-    "let g:Tex_ViewRule_pdf = 'open -a /Applications/Preview.app'
+    "let g:Tex_ViewRule_dvi = 'evince'
+    "let g:Tex_ViewRule_pdf = 'evince'
+    let g:Tex_ViewRule_dvi = 'evince $*.dvi &'
+    let g:Tex_ViewRule_pdf = 'evince $*.pdf &'
+
     "call Tex_SetTeXCompilerTarget('View','pdf')
     "}
     " NerdTree: 
@@ -535,16 +428,22 @@
         "let NERDTreeKeepTreeInNewTab=1
         let g:nerdtree_tabs_open_on_gui_startup=1
     " }
+    "
+    " Simplenote:
+    " {
+        let g:SimplenoteUsername = "marco.knipfer@me.com"
+        let g:SimplenotePassword = "1111einseinself_Sn"
+    " }
     " UndoTree:
     " {
-        "nnoremap <Leader>u :UndotreeToggle<CR>
-        "" If undotree is opened, it is likely one wants to interact with it.
-        "let g:undotree_SetFocusWhenToggle=1
+        nnoremap <Leader>u :UndotreeToggle<CR>
+        " If undotree is opened, it is likely one wants to interact with it.
+        let g:undotree_SetFocusWhenToggle=1
     " }
     " Supertab:
     " {
-        "let g:SuperTabDefaultCompletionType = "context"
-        ":highlight Pmenu guibg=brown gui=bold   " this is actually not a supertab,but a omnicomplete setting
+        let g:SuperTabDefaultCompletionType = "context"
+        :highlight Pmenu guibg=brown gui=bold   " this is actually not a supertab,but a omnicomplete setting
     " }
     " Tabularize:
     "{
@@ -570,42 +469,12 @@
         nmap <leader>ss :SessionSave<CR>
         nmap <leader>sc :SessionClose<CR>
     " }
-    " Snippets:
-    "{
+    " Neosnippet:
+    " {
 	imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 	smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 	xmap <C-k>     <Plug>(neosnippet_expand_target)
-	xmap <C-l>     <Plug>(neosnippet_start_unite_snippet_target)
-	" For snippet_complete marker.
-	"if has('conceal')
-	  "set conceallevel=2 concealcursor=i
-	"endif
-	:set cole=0
-    "}
-    " Neocomplte:
-    " {
     " }
-    " Expand-Region:
-    " {
-    "nmap v <Plug>(expand_region_expand)
-    "vmap <C-v> <Plug>(expand_region_shrink)
-    " type v v v v to expand visual selection
-    " }
-    " Autoformat:
-    "{
-    nnoremap <F3> :Autoformat
-    "}
-    " vim-flake8:
-    "{
-    " run flake8 every time writing a .py
-    autocmd BufWritePost *.py call Flake8()
-    "}
-    " vim-indent-guides:
-    "{
-    let g:indent_guides_start_level = 2
-    let g:indent_guides_guide_size = 1
-
-    "}
 "}
 
 " Functions:
@@ -624,38 +493,14 @@
         call cursor(l, c)
     endfunction
     " }
-    " run python
-    " {
-    function! LangRunner()
-        if (&ft=="python")
-            noremap <leader>k :!python3 %<cr>
-        endif
-    endfunction
-    au BufEnter * call LangRunner()
-    " }
-    " realign buffers when iterm goes fullscreen
-    " {
-    "augroup FixProportionsOnResize
-        "au!
-        "au VimResized * exe "normal! \<c-w>="
-    "augroup END   
-    " }
 "}
 
 
 " TODO:
 "{
-"   - update vundle -> Vundle
 "   - read on vim-surround
 "   - read :help insert 
 "   - supertab better settings
-"   - Get <A-j> and <A-k> right for german and english layout
 "}
 
-" Important Keymappings I dont wanna forget:
-" F7 run flake8
-" F3 Autoformat 
-" vvv
-" <Leader>ff 
-" <Leader>d 
 
