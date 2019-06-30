@@ -1,4 +1,5 @@
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker :
+
 " Marco Knipfer .vimrc
 " lastname at F I A S dot uni - frankfurt dot de
 
@@ -19,8 +20,8 @@
 "--------------------------------------------------------------
 "|                                                            |
 "--------------------------------------------------------------
-                                                                                       
-                                                                                       
+
+
 
 " Structure:
 " - Environment
@@ -34,7 +35,7 @@
 
 " Requirements:
 " - [vundle](https://github.com/gmarik/Vundle.vim)
-" - (not this version) sauce code powerline font 
+" - (not this version) sauce code powerline font
 
 " Environment/Vundle/Plugins:
 " {
@@ -67,7 +68,7 @@
     Plugin 'Lokaltog/vim-easymotion'    " Neat! Maybe switch to stupideasymotion
     "Plugin 'altercation/vim-colors-solarized'
     "Plugin 'spf13/vim-colors'
-    "Plugin 'spf13/vim-autoclose'        
+    "Plugin 'spf13/vim-autoclose'
     Plugin 'flazz/vim-colorschemes'
     Plugin 'scrooloose/nerdtree'
     Plugin 'scrooloose/nerdcommenter'   " ,cc for comment / ,cu for uncomment
@@ -75,7 +76,7 @@
     Plugin 'tpope/vim-surround'         " Brackets --> read doc!
     Plugin 'bling/vim-airline'          " better status bar
     Plugin 'vim-scripts/sessionman.vim' " :SessionSave
-    Plugin 'majutsushi/tagbar'          " tags 
+    Plugin 'majutsushi/tagbar'          " tags
     Plugin 'ervandew/supertab'          " Tab completion
     Plugin 'mbbill/undotree'
     Plugin 'jlanzarotta/bufexplorer'
@@ -97,6 +98,7 @@
     "Plugin 'kien/ctrlp.vim'
     "Plugin 'terryma/vim-multiple-cursors'
     "Plugin 'bling/vim-bufferline'
+    Plugin 'wincent/terminus'
     Plugin 'plasticboy/vim-markdown'
     Plugin 'mrtazz/simplenote.vim'
 
@@ -108,7 +110,7 @@
     call vundle#end()            " required
     filetype plugin indent on    " required
 
-    " Identify platform 
+    " Identify platform
     " {
         silent function! OSX()
             return has('macunix')
@@ -133,7 +135,7 @@
     set mousehide               " Hide the mouse cursor while typing
     "scriptencoding utf-8       " what does this thing?
     set encoding=utf-8 fileencoding=utf-8
-    set clipboard=unnamed       " in order to have the same clipboard as elsewhere
+    set clipboard=unnamedplus
     "set autowrite              " Automatically write a file when leaving a modified buffer, interesting, but not using it for now
     set virtualedit=onemore     " Allow for cursor beyond last character
     set history=1000            " Store a ton of history (default is 20)
@@ -145,7 +147,7 @@
     set nobackup
     set noswapfile
     set undodir=~/.vim/undo/
-    set visualbell              " turn off annoying bell (eg when pressing esc)    
+    set visualbell              " turn off annoying bell (eg when pressing esc)
 "}
 
 " Vim UI:
@@ -168,7 +170,7 @@
 "   misc:
 "   {
     set nohlsearch                  " turn off highlighting for searched expressions, have shortcut "-"
-    set incsearch                   " highlight as we search however
+    set incsearch                   " highlight while typing
     set matchtime=5                 " blink matching chars for .x seconds
     set cursorline                  " Highlight current line
     let g:CSApprox_hook_post = ['hi clear SignColumn'] " do not highlight current line number
@@ -176,8 +178,7 @@
     set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
     set backspace=indent,eol,start  " see :help backspace
     "set nu                          " Line numbers on
-    set rnu                         " relative line numbering, toggle with <C-N> (plugin?)
-    set incsearch                   " Find as you type search
+    "set rnu                         " relative line numbering, toggle with <C-N> (plugin?)
     set hlsearch                    " Highlight search terms
     set ignorecase                  " Case insensitive search
     set smartcase                   " only case insensitive, when only lowercase letters
@@ -203,7 +204,7 @@
                                     " --> shortcut for to toggle :set list!
     set showmatch                   " Show matching brackets/parenthesis
     set scrolljump=5                " Lines to scroll when cursor leaves screen
-    set scrolloff=3                 " Minimum lines to keep above and below cursor
+    set scrolloff=5                 " Minimum lines to keep above and below cursor
     set expandtab                   " Tabs are spaces, not tabs
     set tabstop=4                   " An indentation every four columns
     set softtabstop=4               " Let backspace delete indent
@@ -218,7 +219,7 @@
     "}
 "   statusbar:
 "   {
-"       I'll have to work on that one. 
+"       I'll have to work on that one.
         set showmode                     "Display the current mode
         set showcmd                      "shows info about current line
         set laststatus=2                          "to display the status line always
@@ -251,10 +252,14 @@
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
     " also joining lines is now ,j instead of J
-    map <S-J> <C-W>j<C-W>_
-    map <S-K> <C-W>k<C-W>_
-    map <S-L> <C-W>l<C-W>_
-    map <S-H> <C-W>h<C-W>_
+    "map <S-J> <C-W>j<C-W>_
+    "map <S-K> <C-W>k<C-W>_
+    "map <S-L> <C-W>l<C-W>_
+    "map <S-H> <C-W>h<C-W>_
+    map <S-J> <C-W>j
+    map <S-K> <C-W>k
+    map <S-L> <C-W>l
+    map <S-H> <C-W>h
     " The following two lines conflict with moving to top and
     " bottom of the screen, whith it you can jump between tabs
     map <C-H> gT
@@ -264,7 +269,7 @@
     " Left and right are for switching buffers, not moving the cursor:
     nmap <right> :bn<RETURN>
     nmap <left> :bp<RETURN>
-    " up and down 
+    " up and down
     nmap <up> :BufExplorer<RETURN>
     nmap <down> :b#<RETURN>
 
@@ -284,7 +289,7 @@
     noremap j gj
     noremap k gk
     noremap gj j
-    noremap gk k    
+    noremap gk k
     " move up/down fast with alt j alt k
     if OSX()
         nmap ∆ 10jzz
@@ -302,17 +307,17 @@
     noremap <leader>v <C-w>v
 
     " Insert empty line with ALT o
-    if OSX() 
+    if OSX()
         nmap ø o<ESC>k
         noremap Ø O<ESC>j
     " ok I included the normal commands too :P
     else
         nmap <A-o> o<ESC>k
         nmap <A-O> O<ESC>j
-    end 
+    end
     " Problem: Conflicts with my movement above
     " <m-j> and <m-k> to drag lines in any mode
-    "if OSX() 
+    "if OSX()
         "noremap º :m+<CR>
         "noremap ∆ :m-2<CR>
         "inoremap º <Esc>:m+<CR>
@@ -361,7 +366,7 @@
     vnoremap > >gv
     " Allow using the repeat operator with a visual selection (!)
     " http://stackoverflow.com/a/8064607/127816
-    vnoremap . :normal .<CR>   
+    vnoremap . :normal .<CR>
     " Map <Leader>ff to display all lines with keyword under cursor
     " and ask which one to jump to
     nmap <Leader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[\t"<CR>
@@ -397,23 +402,25 @@
         imap ˆ <Plug>Tex_InsertItemOnThisLine
         imap ç <Plug>Tex_MathCal
     end
-    set iskeyword+=: 
+    set iskeyword+=:
     "let g:tex_flavor='latex'
-    let g:tex_flavor='xelatex'
+    let g:tex_flavor='latex'
     "let g:Tex_CompileRule_pdf= 'pdflatex -interaction=nonstopmode -file-line-error-style $*'
     let g:Tex_DefaultTargetFormat = 'pdf'
-    let g:Tex_MultipleCompileFormats='pdf, bibtex, pdf'
+    let g:Tex_CompileRule_pdf= 'arara -v $*'
+    "let g:Tex_MultipleCompileFormats='pdf'
+    "let g:Tex_MultipleCompileFormats='pdf, biber, pdf'
     "let g:Tex_MultipleCompileFormats='pdf, aux'
-    let g:Tex_TreatMacViewerAsUNIX = 1
-    let g:Tex_ExecuteUNIXViewerInForeground = 1
+    "let g:Tex_TreatMacViewerAsUNIX = 1
+    "let g:Tex_ExecuteUNIXViewerInForeground = 1
     "let g:Tex_ViewRule_dvi = 'evince'
-    "let g:Tex_ViewRule_pdf = 'evince'
+    "let g:Tex_ViewRule_ = 'zathura &'
     let g:Tex_ViewRule_dvi = 'evince $*.dvi &'
-    let g:Tex_ViewRule_pdf = 'evince $*.pdf &'
+    let g:Tex_ViewRule_ = 'zathura $*.pdf &'
 
     "call Tex_SetTeXCompilerTarget('View','pdf')
     "}
-    " NerdTree: 
+    " NerdTree:
     "   {
         map <C-e> :NERDTreeToggle<CR>:NERDTreeMirror<CR>
         map <leader>e :NERDTreeFind<CR>
@@ -428,7 +435,6 @@
         "let NERDTreeKeepTreeInNewTab=1
         let g:nerdtree_tabs_open_on_gui_startup=1
     " }
-    "
     " Simplenote:
     " {
         let g:SimplenoteUsername = "marco.knipfer@me.com"
@@ -462,7 +468,7 @@
         nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
         vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
     " }
-    " Session List: 
+    " Session List:
     "{
         set sessionoptions=blank,buffers,curdir,folds,tabpages,winsize
         nmap <leader>sl :SessionList<CR>
@@ -474,6 +480,11 @@
 	imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 	smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 	xmap <C-k>     <Plug>(neosnippet_expand_target)
+    " }
+    " vim-numbertoggle:
+    " {
+    set number relativenumber
+    :nnoremap <silent> <C-n> :set relativenumber!<cr>
     " }
 "}
 
@@ -495,11 +506,18 @@
     " }
 "}
 
+" Other:
+" {
+" Markwown syntax highlight in calcurse notes
+autocmd BufRead, BufNewFile /tmp/calcurse* set filetype=markdown
+autocmd BufRead, BufNewFile /.calcurse/notes/* set filetype=markdown
+" }
+
 
 " TODO:
 "{
 "   - read on vim-surround
-"   - read :help insert 
+"   - read :help insert
 "   - supertab better settings
 "}
 
